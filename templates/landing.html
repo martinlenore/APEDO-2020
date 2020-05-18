@@ -1,0 +1,547 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="keywords" content="Bootstrap, Landing page, Template, Business, Service">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="author" content="Sean Daylor">
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'favicon.ico' %}" />
+  <title>AMPed - Home</title>
+
+  <link rel="stylesheet" href="{% static 'landing/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'landing/css/animate.css' %}">
+  <link rel="stylesheet" href="{% static 'landing/css/LineIcons.css' %}">
+  <link rel="stylesheet" href="{% static 'landing/css/owl.carousel.css' %}">
+  <link rel="stylesheet" href="{% static 'landing/css/owl.theme.css' %}">
+  <link rel="stylesheet" href="{% static 'landing/css/magnific-popup.css' %}">
+  <link rel="stylesheet" href="{% static 'landing/css/nivo-lightbox.css' %}">
+  <link rel="stylesheet" href="{% static 'landing/css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'landing/css/responsive.css' %}">
+  <link rel="stylesheet" href="{% static 'landing/css/fontawesome.css' %}">
+</head>
+
+<body>
+
+  <header id="home" class="hero-area">
+    <div class="overlay">
+      <span></span>
+      <span></span>
+    </div>
+    <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
+      <div class="container">
+        <a href="#" class="navbar-brand"><img src="{% static 'landing/images/AMPed_Logo_Clear.png' %}" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="lni-menu"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto w-100 justify-content-end">
+            <li class="nav-item">
+              <a class="nav-link page-scroll" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link page-scroll" href="#services">Databases</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link page-scroll" href="#features">Tools</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link page-scroll" href="#showcase">Team</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link page-scroll" href="#contact">Contact</a>
+            </li>
+            <li class="nav-item">
+              {% if user.is_authenticated %}
+              <a class="btn btn-singin" href="{% url 'logout' %}" rel="nofollow">Logout</a>
+              {% else %}
+              <a class="btn btn-singin" href="{% url 'login' %}" rel="nofollow">Log in</a>
+              {% endif %}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row space-100">
+        <div class="col-lg-6 col-md-12 col-xs-12">
+          <div class="contents">
+            <h2 class="head-title">Antimicrobial Peptide Editable Database</h2>
+            <p>A powerful search tool with extensive antimicrobial peptides data to support your research needs.</p>
+            <div class="header-button">
+              <a href="#" rel="nofollow" class="btn btn-border-filled">Search</a>
+              <a href="#contact" class="btn btn-border page-scroll">Contact Us</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12 col-xs-12 p-0">
+          <div class="intro-img">
+            <img src="{% static 'landing/images/intro.png' %}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <section id="services" class="section">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-4 col-md-6 col-xs-12">
+          <a href="{% url 'peptide_db' %}">
+          <div class="services-item text-center">
+            <div class="icon">
+              <i class="fas fa-vial"></i>
+            </div>
+            <h4>Peptide Database</h4>
+            <p>Our objective is to provide valuable information about antimicrobial peptides in one place. Amino acid sequences are the most unambiguous way to characterize peptides with diverse naming conventions.</p>
+          </div>
+        </a>
+        </div>
+
+
+        <div class="col-lg-4 col-md-6 col-xs-12">
+          <a href="{% url 'microbe_db' %}">
+          <div class="services-item text-center">
+            <div class="icon">
+              <i class="fas fa-microscope"></i>
+            </div>
+            <h4>Microbe Database</h4>
+            <p>Peptides that kill microbes are tested by many different methods, such as in vivo, or in broth, or as inhibition zones on plates, and antimicrobial activity concentration units must be clearly defined as moles/L or g/L.</p>
+          </div>
+        </a>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-xs-12">
+          <a href="{% url 'structure_db' %}">
+          <div class="services-item text-center">
+            <div class="icon">
+              <i class="fas fa-atom"></i>
+            </div>
+            <h4>Structure Information</h4>
+            <p>Secondary and tertiary structural information is largely derived from the RCSB database and is classified according to the method used, such as X-ray, NMR, and Cryot-TEM methods.</p>
+          </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section id="business-plan">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-12 pl-0 pt-70 pr-5">
+          <div class="business-item-img">
+            <img src="{% static 'landing/images/female-scientist.png' %}" class="img-fluid" alt="">
+          </div>
+        </div>
+
+        <div class="col-lg-6 col-md-12 pl-4">
+          <div class="business-item-info">
+            <h3>Why AMPed?</h3>
+            <p>The idea behind "AMPed" (Anti-Microbial Peptide Editable Database) is to create an annotated collection of antimicrobial peptides that are sourced from several online repositories, journals and existing large databases such as ATCC, PDB, UniProt and NCBI with the purpose of uniformity and coherence.</p>
+            {% if user.is_authenticated %}
+            {% else %}
+            <a class="btn btn-common" href="{% url 'signup' %}">Join Us</a>
+            {% endif %}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section id="features" class="section">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="features-text section-header text-center">
+            <div>
+              <h2 class="section-title">Tools</h2>
+              <div class="desc-text">
+                <p>The data that we've collected enables us to provide you with the following tools...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row featured-bg">
+
+        <div class="col-lg-6 col-md-6 col-xs-12 p-0">
+
+        <a href="{% url 'calulator_tool' %}">
+          <div class="feature-item featured-border1">
+            <div class="feature-icon float-left">
+              <i class="fas fa-calculator"></i>
+            </div>
+            <div class="feature-info float-left">
+              <h4>MIC/MLC Calculator</h4>
+              <p>What is this thing???</p>
+            </div>
+          </div>
+        </a>
+
+        </div>
+
+
+        <div class="col-lg-6 col-md-6 col-xs-12 p-0">
+
+        <a href="{% url 'massspec_tool' %}">
+          <div class="feature-item featured-border2">
+            <div class="feature-icon float-left">
+              <i class="fas fa-chart-bar"></i>
+            </div>
+            <div class="feature-info float-left">
+              <h4>Mass Spec Analysis</h4>
+              <p>What is this thing???</p>
+            </div>
+          </div>
+        </a>
+
+        </div>
+
+
+        <div class="col-lg-6 col-md-6 col-xs-12 p-0">
+
+        <a href="#">
+          <div class="feature-item featured-border1">
+            <div class="feature-icon float-left">
+              <i class="fas fa-question"></i>
+            </div>
+            <div class="feature-info float-left">
+              <h4>Tool #3?</h4>
+              <p>What is this thing???</p>
+            </div>
+          </div>
+        </a>
+
+        </div>
+
+
+        <div class="col-lg-6 col-md-6 col-xs-12 p-0">
+
+        <a href="#">
+          <div class="feature-item featured-border2">
+            <div class="feature-icon float-left">
+              <i class="fas fa-question"></i>
+            </div>
+            <div class="feature-info float-left">
+              <h4>Tool #4?</h4>
+              <p>What is this thing???</p>
+            </div>
+          </div>
+        </a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <section id="showcase">
+    <div class="container-fluid right-position">
+
+      <div class="row gradient-bg">
+        <div class="col-lg-12">
+          <div class="showcase-text section-header text-center">
+            <div>
+              <h2 class="section-title">Team Members</h2>
+              <div class="desc-text">
+                <p>Meet the team behind AMPed!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row justify-content-center showcase-area">
+        <div class="col-lg-12 col-md-12 col-xs-12 pr-0">
+          <div class="showcase-slider owl-carousel">
+
+            <div class="item">
+              <div class="single-team">
+                <div class="team-thumb">
+                  <img src="{% static 'landing/images/team_placeholder.png' %}" class="img-fluid" alt="">
+                </div>
+                <div class="team-details">
+                  <div class="team-social-icons">
+                    <ul class="social-list">
+                      <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                      <li><a href="#"><i class="far fa-envelope"></i></a></li>
+                      <li><a href="#"><i class="fas fa-link"></i></a></li>
+                    </ul>
+                  </div>
+                  <div class="team-inner text-center">
+                    <h5 class="team-title">Dr. Lenore Martin</h5>
+                    <p>Faculty Advisor</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="single-team">
+                <div class="team-thumb">
+                  <img src="{% static 'landing/images/team_placeholder.png' %}" class="img-fluid" alt="">
+                </div>
+                <div class="team-details">
+                  <div class="team-social-icons">
+                    <ul class="social-list">
+                      <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                      <li><a href="#"><i class="far fa-envelope"></i></a></li>
+                      <li><a href="#"><i class="fas fa-link"></i></a></li>
+                    </ul>
+                  </div>
+                  <div class="team-inner text-center">
+                    <h5 class="team-title">Dr. Joan Peckham</h5>
+                    <p>Faculty Advisor</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="single-team">
+                <div class="team-thumb">
+                  <img src="{% static 'landing/images/team_placeholder.png' %}" class="img-fluid" alt="">
+                </div>
+                <div class="team-details">
+                  <div class="team-social-icons">
+                    <ul class="social-list">
+                      <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                      <li><a href="#"><i class="far fa-envelope"></i></a></li>
+                      <li><a href="#"><i class="fas fa-link"></i></a></li>
+                    </ul>
+                  </div>
+                  <div class="team-inner text-center">
+                    <h5 class="team-title">Sean Daylor</h5>
+                    <p>Project Lead</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="single-team">
+                <div class="team-thumb">
+                  <img src="{% static 'landing/images/team_placeholder.png' %}" class="img-fluid" alt="">
+                </div>
+                <div class="team-details">
+                  <div class="team-social-icons">
+                    <ul class="social-list">
+                      <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                      <li><a href="#"><i class="far fa-envelope"></i></a></li>
+                      <li><a href="#"><i class="fas fa-link"></i></a></li>
+                    </ul>
+                  </div>
+                  <div class="team-inner text-center">
+                    <h5 class="team-title">Liam Garvey</h5>
+                    <p>&nbsp;</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="single-team">
+                <div class="team-thumb">
+                  <img src="{% static 'landing/images/team_placeholder.png' %}" class="img-fluid" alt="">
+                </div>
+                <div class="team-details">
+                  <div class="team-social-icons">
+                    <ul class="social-list">
+                      <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                      <li><a href="#"><i class="far fa-envelope"></i></a></li>
+                      <li><a href="#"><i class="fas fa-link"></i></a></li>
+                    </ul>
+                  </div>
+                  <div class="team-inner text-center">
+                    <h5 class="team-title">Anusha Singamaneni</h5>
+                    <p>&nbsp;</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="single-team">
+                <div class="team-thumb">
+                  <img src="{% static 'landing/images/team_placeholder.png' %}" class="img-fluid" alt="">
+                </div>
+                <div class="team-details">
+                  <div class="team-social-icons">
+                    <ul class="social-list">
+                      <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                      <li><a href="#"><i class="far fa-envelope"></i></a></li>
+                      <li><a href="#"><i class="fas fa-link"></i></a></li>
+                    </ul>
+                  </div>
+                  <div class="team-inner text-center">
+                    <h5 class="team-title">Siyi Li</h5>
+                    <p>&nbsp;</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="single-team">
+                <div class="team-thumb">
+                  <img src="{% static 'landing/images/team_placeholder.png' %}" class="img-fluid" alt="">
+                </div>
+                <div class="team-details">
+                  <div class="team-social-icons">
+                    <ul class="social-list">
+                      <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                      <li><a href="#"><i class="far fa-envelope"></i></a></li>
+                      <li><a href="#"><i class="fas fa-link"></i></a></li>
+                    </ul>
+                  </div>
+                  <div class="team-inner text-center">
+                    <h5 class="team-title">Xianhao Zhou</h5>
+                    <p>&nbsp;</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="contact" class="section" style="padding: 130px 0 0 0;">
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="contact-text section-header text-center">
+            <div>
+              <h2 class="section-title">Get In Touch</h2>
+              <div class="desc-text">
+                <p>Please fill out the form with any questions, comments, or suggestions</p>
+                <p>and we'll get back to you as soon as possible.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+
+        <div class="col-lg-6 col-md-12">
+          <form id="contactForm" method="post">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <!--<input type="text" class="form-control" id="name" name="name" placeholder="Name" required data-error="Please enter your name">-->
+                  {{ form.name }}
+                  <div class="help-block with-errors"></div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <!--<input type="text" class="form-control" id="email" name="email" placeholder="Email" required data-error="Please enter your Email">-->
+                  {{ form.email }}
+                  <div class="help-block with-errors"></div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <!--<textarea class="form-control" id="message" name="message" placeholder="Write Message" rows="4" data-error="Write your message" required></textarea>-->
+                  {{ form.message }}
+                  <div class="help-block with-errors"></div>
+                </div>
+                <div class="submit-button">
+                  <button class="btn btn-common" id="submit" type="submit">Submit</button>
+                  <div id="msgSubmit" class="h3 hidden"></div>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+
+        <div class="col-lg-1">
+        </div>
+
+
+        <div class="col-lg-4 col-md-12">
+          <div class="contact-img">
+            <img src="{% static 'landing/images/contact.png' %}" class="img-fluid" alt="">
+          </div>
+        </div>
+
+
+        <div class="col-lg-1">
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <footer>
+
+    <section id="footer-Content">
+
+      <div class="copyright">
+        <div class="container">
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="site-info text-center">
+                <p>&copy; <script type="text/javascript">
+                  document.write(new Date().getFullYear());
+                </script> University of Rhode Island. All rights reserved.
+              </p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+  </footer>
+
+
+  <a href="#" class="back-to-top">
+    <i class="fas fa-chevron-up"></i>
+  </a>
+
+  <div id="preloader">
+    <div class="loader" id="loader-1"></div>
+  </div>
+
+  <script src="{% static 'landing/js/jquery-min.js' %}"></script>
+  <script src="{% static 'landing/js/popper.min.js' %}"></script>
+  <script src="{% static 'landing/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'landing/js/owl.carousel.js' %}"></script>
+  <script src="{% static 'landing/js/jquery.nav.js' %}"></script>
+  <script src="{% static 'landing/js/scrolling-nav.js' %}"></script>
+  <script src="{% static 'landing/js/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'landing/js/nivo-lightbox.js' %}"></script>
+  <script src="{% static 'landing/js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'landing/js/form-validator.min.js' %}"></script>
+  <script src="{% static 'landing/js/contact-form-script.js' %}"></script>
+  <script src="{% static 'landing/js/main.js' %}"></script>
+</body>
+
+</html>

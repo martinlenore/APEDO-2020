@@ -1,0 +1,28 @@
+{% extends 'dashboard/database/_base.html' %}
+{% block title %}<title>AMPed - Structure Database</title>{% endblock title %}
+{% block heading %}Structure Database{% endblock heading %}
+{% block text %}Secondary and tertiary structural information is largely derived from the RCSB database and is classified according to the method used, such as X-ray, NMR, and Cryot-TEM methods.{% endblock text %}
+
+{% block structure_db %}<li class="active"><a href="{% url 'structure_db' %}" class="menu-item">Structure Information</a></li>{% endblock structure_db %}
+
+{% block t_headings %}
+{% for head in table_headings %}
+<th>{{ head }}</th>
+{% endfor %}
+{% endblock t_headings %}
+
+{% block t_content %}
+<tr>
+  <td>AMP2NLB</td>
+  <td>2NLB</td>
+  <td>Beta-defensin 1</td>
+  <td>P60022</td>
+  <td>(1.850) X-RAY DIFFRACTION</td>
+</tr>
+{% endblock t_content %}
+
+{% block t_headings2 %}
+{% for head in table_headings %}
+<th>{{ head }}</th>
+{% endfor %}
+{% endblock t_headings2 %}

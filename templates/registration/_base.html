@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>{% block title %}AMPed{% endblock title %}</title>
+	<meta charset="UTF-8">
+	<meta name="author" content="Sean Daylor">
+	<link rel="shortcut icon" type="image/x-icon" href="{% static 'favicon.ico' %}" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{% static 'login/vendor/bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'login/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'login/vendor/animate/animate.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'login/vendor/css-hamburgers/hamburgers.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'login/vendor/select2/select2.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'login/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'login/css/main.css' %}">
+<style>
+.isa_info, .isa_success, .isa_warning, .isa_error {
+margin: 10px 0px;
+padding:12px;
+
+}
+.isa_info {
+    color: #00529B;
+    background-color: #BDE5F8;
+}
+.isa_success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+}
+.isa_warning {
+    color: #9F6000;
+    background-color: #FEEFB3;
+}
+.isa_error {
+    color: #D8000C;
+    background-color: #FFD2D2;
+}
+.isa_info i, .isa_success i, .isa_warning i, .isa_error i {
+    margin:10px 22px;
+    font-size:2em;
+    vertical-align:middle;
+}
+</style>
+</head>
+<body>
+
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt" data-tilt>
+					<a href="{% url 'home' %}"><img src="{% static 'login/images/AMPed_Logo_Clear.png' %}" alt="IMG"></a>
+				</div>
+
+          {% block content %}
+          <p>
+            Default content...
+          </p>
+          {% endblock content %}
+        </div>
+  		</div>
+  	</div>
+
+  	<script src="{% static 'login/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+  	<script src="{% static 'login/vendor/bootstrap/js/popper.js' %}"></script>
+  	<script src="{% static 'login/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+  	<script src="{% static 'login/vendor/select2/select2.min.js' %}"></script>
+  	<script src="{% static 'login/js/main.js' %}"></script>
+
+  </body>
+  </html>

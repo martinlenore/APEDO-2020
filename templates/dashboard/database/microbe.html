@@ -1,0 +1,27 @@
+{% extends 'dashboard/database/_base.html' %}
+{% block title %}<title>AMPed - Microbe Database</title>{% endblock title %}
+{% block heading %}Microbe Database{% endblock heading %}
+{% block text %}Peptides that kill microbes are tested by many different methods, such as in vivo, or in broth, or as inhibition zones on plates, and antimicrobial activity concentration units must be clearly defined as moles/L or g/L. Test microbes must be fully characterized by genome and species, which relies heavily on ATCC numbers.{% endblock text %}
+
+{% block microbe_db %}<li class="active"><a href="{% url 'microbe_db' %}" class="menu-item">Microbe</a></li>{% endblock microbe_db %}
+
+{% block t_headings %}
+{% for head in table_headings %}
+<th>{{ head }}</th>
+{% endfor %}
+{% endblock t_headings %}
+
+{% block t_content %}
+<tr>
+  <td>9372</td>
+  <td>Bacterium</td>
+  <td>Bacillus atrophaeus NRS 1221A</td>
+  <td>Gram (+)</td>
+</tr>
+{% endblock t_content %}
+
+{% block t_headings2 %}
+{% for head in table_headings %}
+<th>{{ head }}</th>
+{% endfor %}
+{% endblock t_headings2 %}

@@ -1,0 +1,119 @@
+{% extends 'dashboard/tools/_base.html' %}
+{% load static %}
+
+{% block heading %}MIC & MLC Calculator{% endblock heading %}
+{% block text %}Please answer a few question to get started{% endblock text %}
+
+{% block calc_tool %}<li class="active"><a href="{% url 'calulator_tool' %}" class="menu-item">MIC/MLC Calculator</a></li>{% endblock calc_tool %}
+
+{% block bodycontent %}
+<div class="card-body">
+  <div class="px-3">
+    <form class="form form-horizontal" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="form-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-md-3 label-control" for="userinput1">Bacteria: </label>
+              <div class="col-md-9">
+                <!-- <input type="text" id="userinput1" class="form-control border-primary" name="firstname"> -->
+                {{ form.bacteria }}
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-md-3 label-control" for="userinput2">Assay type: </label>
+              <div class="col-md-9">
+                <!-- <input type="text" id="userinput2" class="form-control border-primary" name="lastname"> -->
+                {{ form.assay }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-md-3 label-control" for="userinput3">Medium: </label>
+              <div class="col-md-9">
+                <!-- <input type="text" id="userinput3" class="form-control border-primary" name="username"> -->
+                {{ form.medium }}
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-md-3 label-control" for="userinput4">Test Peptide #1 Nickname: </label>
+              <div class="col-md-9">
+                <!-- <input type="text" id="userinput4" class="form-control border-primary" name="nickname"> -->
+                {{ form.pep1Nickname }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-md-3 label-control" for="userinput3">Test Peptide #2 Nickname: </label>
+              <div class="col-md-9">
+                <!-- <input type="text" id="userinput3" class="form-control border-primary" name="username"> -->
+                {{ form.pep2Nickname }}
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-md-3 label-control" for="userinput4">Control antibiotic: </label>
+              <div class="col-md-9">
+                <!-- <input type="text" id="userinput4" class="form-control border-primary" name="nickname"> -->
+                {{ form.controlAntibiotic }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-md-3 label-control" for="userinput3">Antibiotic concentration: </label>
+              <div class="col-md-9">
+                <!-- <input type="text" id="userinput3" class="form-control border-primary" name="username"> -->
+                {{ form.antibioticConcentration }}
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-md-3 label-control" for="userinput4">Time point count: </label>
+              <div class="col-md-9">
+                <!-- <input type="text" id="userinput4" class="form-control border-primary" name="nickname"> -->
+                {{ form.timePointCount }}
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row" style="padding-left:15px">
+              <label for="basicInputFile">Select CSV Data</label>
+              <!-- <input type="file" class="form-control-file" id="basicInputFile"> -->
+              {{ form.file }}
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="form-actions right">
+        <button type="submit" class="btn btn-raised btn-primary">
+          <i class="fa fa-check-square-o"></i> Submit
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>
+{% endblock bodycontent %}

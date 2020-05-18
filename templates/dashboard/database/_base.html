@@ -1,0 +1,41 @@
+{% extends 'dashboard/_base.html' %}
+{% load static %}
+
+{% block title %}{% endblock title %}
+
+{% block content %}
+<section id="scroll-dynamic">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">{% block heading %}{% endblock heading %}</h4>
+        </div>
+        <div class="card-body collapse show">
+          <div class="card-block card-dashboard">
+            <p class="card-text">{% block text %}{% endblock text %}</p>
+            <table class="table table-striped table-bordered dynamic-height">
+              <thead>
+                <tr>
+                  {% block t_headings %}
+                  {% endblock t_headings %}
+                </tr>
+              </thead>
+              <tbody>
+                {% block t_content %}
+                {% endblock t_content %}
+              </tbody>
+              <tfoot>
+                <tr>
+                  {% block t_headings2 %}
+                  {% endblock t_headings2 %}
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

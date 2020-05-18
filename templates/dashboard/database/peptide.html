@@ -1,0 +1,48 @@
+{% extends 'dashboard/database/_base.html' %}
+{% block title %}<title>AMPed - Peptide Database</title>{% endblock title %}
+{% block heading %}Peptide Database{% endblock heading %}
+{% block text %}Our main focus with AMPed is to provide all valuable information about antimicrobial peptides in one place. Amino acid sequences are the most unambiguous way to characterize peptides with diverse naming conventions.{% endblock text %}
+
+{% block peptide_db %}<li class="active"><a href="{% url 'peptide_db' %}" class="menu-item">Peptide</a></li>{% endblock peptide_db %}
+
+{% block t_headings %}
+{% for head in table_headings %}
+<th>{{ head }}</th>
+{% endfor %}
+{% endblock t_headings %}
+
+{% block t_content %}
+<tr>
+  <td>AMP2NLB</td>
+  <td>P60022</td>
+  <td>Beta-defensin 1</td>
+  <td>3891.533</td>
+  <td>DHYACVSSGGQCLYSACPIFTKIQGTCYRGKAKCCK</td>
+  <td></td>
+  <td>36</td>
+</tr>
+<tr>
+  <td>AMP3HJD</td>
+  <td>P59665</td>
+  <td>Human neutrophil peptide 1</td>
+  <td>3448.0845</td>
+  <td>ACYCRIPACIAGERRYGTCIYQGRLWAFCC</td>
+  <td></td>
+  <td>30</td>
+</tr>
+<tr>
+  <td>AMP4MGP</td>
+  <td>P11006</td>
+  <td>Magainin 2 Derivative</td>
+  <td>2478.9573</td>
+  <td>GIGKFLHAAKKFAKAFVAEIMNS</td>
+  <td></td>
+  <td>23</td>
+</tr>
+{% endblock t_content %}
+
+{% block t_headings2 %}
+{% for head in table_headings %}
+<th>{{ head }}</th>
+{% endfor %}
+{% endblock t_headings2 %}

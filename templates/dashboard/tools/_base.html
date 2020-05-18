@@ -1,0 +1,21 @@
+{% extends 'dashboard/_base.html' %}
+{% load static %}
+
+{% block content %}
+<section id="horizontal-form-layouts">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title" id="horz-layout-colored-controls">{% block heading %}{% endblock heading %}</h4>
+          <p class="mb-0">{% block text %}{% endblock text %}</p>
+        </div>
+          {% block bodycontent %}
+          {% endblock bodycontent %}
+      </div>
+    </div>
+  </div>
+
+</section>
+{% endblock content %}
