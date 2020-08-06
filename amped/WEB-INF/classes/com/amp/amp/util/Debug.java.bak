@@ -1,0 +1,252 @@
+/*******************************************************************************
+ * File: Debug.java
+ *
+ * Copyright (c) 2009 MPower.  All rights Reserved.
+ ******************************************************************************/
+
+package com.amp.amp.util;
+
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.Date;
+import java.util.Enumeration;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+public class Debug {
+
+  public static String generateStackTrace(Throwable e) {
+    StringBuffer buffer = new StringBuffer();
+    StringWriter strWriter = new StringWriter();
+    PrintWriter writer = new PrintWriter(strWriter);
+    e.printStackTrace(writer);
+
+    buffer.append(strWriter + "\n");
+
+    return buffer.toString();
+  }
+
+  @SuppressWarnings("unchecked")
+  public static String generateRequestParameters(HttpServletRequest request) {
+    StringBuffer buffer = new StringBuffer();
+    if (request != null) {
+      Enumeration attrNames = request.getParameterNames();
+      String attrName = null;
+      String[] values;
+
+      while (attrNames.hasMoreElements()) {
+        attrName = (String) attrNames.nextElement();
+        values = request.getParameterValues(attrName);
+        for (int index = 0; index < values.length; index++) {
+          // For security reasons, mask certain request parameters from logs
+          // such as credit card number and credit card cvv2. Logging and storing
+          // such values may have legal implications.
+          if (attrName.equals("password")) {
+            buffer.append(attrName + " = ******** (masked by server for security)\n");
+          } else {
+            buffer.append(attrName + " = " + values[index] + "\n");
+          }
+        }
+      }
+    }
+    return buffer.toString();
+  }
+
+  @SuppressWarnings("unchecked")
+  public static String generateRequestAttributes(HttpServletRequest request) {
+    StringBuffer buffer = new StringBuffer();
+    if (request != null) {
+      Enumeration attrNames = request.getAttributeNames();
+      String attrName = null;
+      Object value;
+
+      while (attrNames.hasMoreElements()) {
+        attrName = (String) attrNames.nextElement();
+        value = request.getAttribute(attrName);
+        buffer.append(attrName + " = " + value + "\n");
+      }
+    }
+    return buffer.toString();
+  }
+
+  @SuppressWarnings("unchecked")
+  public static String generateSessionValues(HttpSession session) {
+    StringBuffer buffer = new StringBuffer();
+
+    if (session != null) {
+      Enumeration attrNames = session.getAttributeNames();
+      String attrName = null;
+
+      if (attrNames != null) {
+        while (attrNames.hasMoreElements()) {
+          attrName = (String) attrNames.nextElement();
+          buffer.append(attrName + " = " + session.getAttribute(attrName) + "\n");
+        }
+      }
+    }
+    return buffer.toString();
+  }
+
+  public static String generateMiscRequestInfo(HttpServletRequest request) {
+    StringBuffer buffer = new StringBuffer();
+
+    if (request != null) {
+      buffer.append("Auth type = " + request.getAuthType() + "\n");
+      buffer.append("Context path = " + request.getContextPath() + "\n");
+      buffer.append("Method = " + request.getMethod() + "\n");
+      buffer.append("Path info = " + request.getPathInfo() + "\n");
+      buffer.append("Query string = " + request.getQueryString() + "\n");
+      buffer.append("Request URI = " + request.getRequestURI() + "\n");
+      buffer.append("Request URL = " + request.getRequestURL() + "\n");
+      buffer.append("Character encoding = " + request.getCharacterEncoding() + "\n");
+      buffer.append("Content length = " + request.getContentLength() + "\n");
+      buffer.append("Content type = " + request.getContentType() + "\n");
+      buffer.append("Local address = " + request.getLocalAddr() + "\n");
+      buffer.append("Local name = " + request.getLocalName() + "\n");
+      buffer.append("Local port = " + request.getLocalPort() + "\n");
+      buffer.append("Protocol = " + request.getProtocol() + "\n");
+      buffer.append("Remote address = " + request.getRemoteAddr() + "\n");
+      buffer.append("Remote host = " + request.getRemoteHost() + "\n");
+      buffer.append("Remote port = " + request.getRemotePort() + "\n");
+      buffer.append("Scheme = " + request.getScheme() + "\n");
+      buffer.append("Server name = " + request.getServerName() + "\n");
+      buffer.append("Server port = " + request.getServerPort() + "\n");
+      buffer.append("Is secure = " + request.isSecure() + "\n");
+    }
+    return buffer.toString();
+  }
+
+  @SuppressWarnings("unchecked")
+  public static String generateHttpHeaders(HttpServletRequest request) {
+    StringBuffer buffer = new StringBuffer();
+
+    if (request != null) {
+      Enumeration headerNames = request.getHeaderNames();
+      String headerName = null;
+
+      if (headerNames != null) {
+        while (headerNames.hasMoreElements()) {
+          headerName = (String) headerNames.nextElement();
+          buffer.append(headerName + " = " + request.getHeader(headerName) + "\n");
+        }
+      }
+    }
+    return buffer.toString();
+  }
+
+  @SuppressWarnings("unchecked")
+  public static String generateServletConfig(ServletConfig config) {
+    StringBuffer buffer = new StringBuffer();
+
+    if (config != null) {
+      Enumeration configNames = config.getInitParameterNames();
+      String configName = null;
+
+      if (configNames != null) {
+        while (configNames.hasMoreElements()) {
+          configName = (String) configNames.nextElement();
+          buffer.append(configName + " = " + config.getInitParameter(configName) + "\n");
+        }
+      }
+    }
+    return buffer.toString();
+  }
+
+  public static String generateRuntimeMemory() {
+    StringBuffer buffer = new StringBuffer();
+    long totalMemory = Runtime.getRuntime().totalMemory();
+    long freeMemory = Runtime.getRuntime().freeMemory();
+    long usedMemory = totalMemory - freeMemory;
+
+    buffer.append("Free Memory: " + freeMemory + " bytes (" + freeMemory / 1024 + " KB, " + freeMemory / 1048576
+        + " MB) " + ((float) freeMemory / (float) totalMemory) * 100 + "%\n");
+    buffer.append("Used Memory: " + usedMemory + " bytes (" + usedMemory / 1024 + " KB, " + usedMemory / 1048576
+        + " MB) " + ((float) usedMemory / (float) totalMemory) * 100 + "%\n");
+    buffer.append("Total Memory: " + totalMemory + " bytes (" + totalMemory / 1024 + " KB, " + totalMemory / 1048576
+        + " MB)\n");
+
+    return buffer.toString();
+  }
+
+  private static String generateReport(Throwable e, HttpServletRequest request) {
+    StringBuffer buffer = new StringBuffer();
+
+    buffer.append("Smsclient Error Report\n");
+    buffer.append("------------------\n");
+    buffer.append("Date: " + new Date() + "\n");
+
+    buffer.append("\nStack Trace\n");
+    buffer.append("-----------\n");
+    buffer.append(generateStackTrace(e));
+
+    buffer.append("\nHTTP Request Parameters\n");
+    buffer.append("-----------------------\n");
+    buffer.append(generateRequestParameters(request));
+
+    if (request != null) {
+      buffer.append("\nHTTP Session\n");
+      buffer.append("------------\n");
+      buffer.append(generateSessionValues(request.getSession()));
+    }
+    buffer.append("\nHTTP Headers\n");
+    buffer.append("------------\n");
+    buffer.append(generateHttpHeaders(request));
+
+    buffer.append("\nHTTP Misc Info\n");
+    buffer.append("--------------\n");
+    buffer.append(generateMiscRequestInfo(request));
+
+    buffer.append("\nRuntime Memory\n");
+    buffer.append("--------------\n");
+    buffer.append(generateRuntimeMemory());
+
+    return buffer.toString();
+  }
+
+  public static void log(Object obj) {
+    System.out.println(obj);
+  }
+
+  /**
+   * Log the exception to standard out and send the error details in an e-mail.
+   * @param e
+   * @param request
+   */
+  public static void log(Throwable e) {
+    log(e, null);
+  }
+
+  /**
+   * Log the exception to standard out and send the error details in an e-mail.
+   * @param e
+   * @param request
+   */
+  public static void log(Throwable e, HttpServletRequest request) {
+    e.printStackTrace();
+    String report = generateReport(e, request);
+    if (Boolean.getBoolean("development_mode")) {
+      log(report);
+      return;
+    }
+    try {
+      log("Sending e-mail report");
+      String from = "krishna.ece10@gmail.com";
+      String recipients[] = new String[3];
+     recipients[0] = "krish_ece418@yahoo.co.in";
+     String subject = "Error report";
+
+      if (request != null) {
+        subject = "MyPetShouts Error on " + request.getServerName() + "\n";
+      } else {
+        subject = "MyPetShouts Error\n";
+      }
+      String message = "<pre>" + report + "</pre>";
+      //VASUtil.postMail(recipients, null, subject, message, from);
+    } catch (Exception ee) {
+      ee.printStackTrace();
+    }
+  }
+
+}
