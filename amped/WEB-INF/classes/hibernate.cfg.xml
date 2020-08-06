@@ -7,14 +7,13 @@
 
     <session-factory>
         
-        
         <!-- Database connection settings -->
         
    
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/amped?characterEncoding=latin1</property>
-        <property name="connection.username">root</property>
-        <property name="connection.password">Rithwik10</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/AMPED2_dev</property>
+        <property name="connection.username">amped_dbuser</property>
+        <property name="connection.password">9AbMdh3ttMAfD4gdHdJT</property>
         <property name="connection.pool_size">10</property>
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="current_session_context_class">thread</property>
@@ -24,6 +23,7 @@
               
        
         <mapping resource="com/amp/amp/amp/beans/UserBean.hbm.xml"/>
+
       
     </session-factory>
 </hibernate-configuration>
