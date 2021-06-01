@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.amp.amp.amp.beans.MicfnBean" table="mic_fn_tbl">
+         <id name="id" column="id" type="java.lang.Integer">
+           <generator class="native"/>
+         </id>
+		   <property name="fileid" type="java.lang.Integer" column="file_id"/> 
+		   <property name="filename" type="java.lang.String" column="filename"/> 
+		   <property name="userid" type="java.lang.Integer" column="user_id"/>
+		   <property name="created_at" type="timestamp" column="created_date"/>
+    </class>
+</hibernate-mapping>

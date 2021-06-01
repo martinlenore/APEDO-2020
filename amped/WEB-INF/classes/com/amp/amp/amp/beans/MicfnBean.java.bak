@@ -1,0 +1,63 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.amp.amp.amp.beans;
+
+import java.util.Date;
+
+/**
+ *
+ * @author Software
+ */
+public class MicfnBean {
+
+    private int id; 
+	private int fileid;
+	private String filename;   
+    private int userid;    
+    private Date created_at;
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+	public String getFilename() {
+        if (filename == null) {
+            filename = "";
+        }
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+	public int getFileid() {
+        return fid;
+    }
+
+    public void setFileid(int fid) {
+        this.fid = fid;
+    }
+
+    public int getUserid() {
+        return userid;
+    }
+
+    public void setUserid(int userid) {
+        this.userid = userid;
+    }
+
+	public Date getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(Date created_at) {
+        this.created_at = created_at;
+    }
+}

@@ -1,0 +1,143 @@
+/*******************************************************************************
+ * File: MICManager.java
+ *
+ * Copyright (c) 2020 Amped.  All rights Reserved.
+ ******************************************************************************/
+package com.amp.amp.buslogic;
+
+import java.util.Date;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
+
+import com.amp.amp.amp.beans.UserBean;
+import com.amp.amp.amp.beans.MicfnBean;
+import com.amp.amp.util.HibernateUtil;
+import java.io.*;
+import java.util.*;
+import java.lang.*;
+import java.lang.Exception;
+import javax.mail.*;
+import javax.mail.internet.*;
+import javax.activation.*;
+
+ 
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+ 
+import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+ 
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.fileupload.*;
+ 
+public class MICManager extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	 private final String UPLOAD_DIRECTORY = "c:/";
+ 
+    public MICManager() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+public static void UploadFiles(HttpServletRequest request,UserBean user)
+            throws ServletException, IOException {
+       
+        //process only if its multipart content
+        if(ServletFileUpload.isMultipartContent(request)){
+            try {
+                List<FileItem> multiparts = new ServletFileUpload(
+                                         new DiskFileItemFactory()).parseRequest(request);
+               System.out.println("USERNAMEEEEEEEEEEEEEEEEEEEEEEEE"+user.getId());
+                for(FileItem item : multiparts){
+					int fid = getFileid() + 1;
+                    if(!item.isFormField()){
+                        String name = new File(item.getName()).getName();
+					  name = fid+"_" + name;
+						System.out.println("FILE NAMEEEEEEEEEEEEEEEE" + name);
+                        item.write( new File("c:/" + File.separator + name));
+						InsertFiles(fid,user.getId(),name);
+                    }
+                }
+            
+               //File uploaded successfully
+               //request.setAttribute("message", "File Uploaded Successfully and excuted MIC R program. Please see result below");
+            } catch (Exception ex) {
+               //request.setAttribute("message", "File Upload Failed due to " + ex);
+            }          
+          
+        }
+      
+    }
+
+	public static int getFileid(){
+	Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+	session.beginTransaction();
+	Query query ;
+	String strQuery;
+	System.out.println("BEFORE EXECUTING PEPTIDE SQL QUERY");
+    strQuery = "select max(fileid) from MicfnBean mf";
+	System.out.println("AFTER EXECUTING PEPTIDE SQL QUERY");
+
+      query = session.createQuery(strQuery);
+	  int result = (int) query.uniqueResult();
+	  	System.out.println("ARESULTTTTTTTTTTTTTTTTT"+result);
+    return result;
+	
+	}
+
+	public static void InsertFiles(int fid, int userid, String name){
+      Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+	session.beginTransaction();
+	MicfnBean micfn = new MicfnBean();
+	 System.out.println("Client Details are added Sucessfully..........."+fid,userid,name);
+	micfn.setFileid(fid);
+	micfn.setUserid(userid);
+	micfn.setFilename(name);
+	micfn.setCreated_at(new Date());
+     session.save(micfn);
+	}
+
+	public static void micResult(HttpServletRequest request){
+		DiskFileItemFactory factory = new DiskFileItemFactory();
+		System.out.println("KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
+		//factory.setRepository(new File("C:/Program Files/Apache Software Foundation/Tomcat 7.0"));
+        System.out.println("KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK-----2");
+      ServletFileUpload upload = new ServletFileUpload(factory);
+	  System.out.println("KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK-----3");
+	try{
+        List<FileItem> items = (List<FileItem>) upload.parseRequest(request);
+        FileItem item;
+		System.out.println("KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK-----4");
+		File importFile = null;
+		String fileName = null;
+        String fieldName = null;
+		
+        Iterator<FileItem> iter = items.iterator();
+        while (iter.hasNext()) {
+          item = (FileItem) iter.next();
+		  fieldName = item.getFieldName();
+		System.out.println("KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK----FN"+fieldName);
+          if (!item.isFormField()) {
+            fileName = item.getName();
+			System.out.println("KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK-----5");
+			importFile = new File("C:/Program Files/Apache Software Foundation/Tomcat 7.0");
+			System.out.println("KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK-----6");
+			item.write(importFile);
+			System.out.println("KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK-----7");
+		  }
+		}}catch(Exception e) {
+         e.printStackTrace();
+		}
+	
+	}
+ 
+ }

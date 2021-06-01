@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.amp.amp.amp.beans.PeptideBean" table="peptide_tbl">
+         <id name="id" column="id" type="java.lang.Integer">
+           <generator class="native"/>
+         </id>
+		   <property name="ampid" type="java.lang.String" column="amp_id"/> 
+		   <property name="accessionno" type="java.lang.String" column="accession_no"/> 
+		   <property name="name" type="java.lang.String" column="name"/>
+		   <property name="molweight" type="java.lang.String" column="mol_weight"/> 
+		   <property name="aasequence" type="java.lang.String" column="aa_sequence"/> 
+		   <property name="note" type="java.lang.String"  column="notes"/>
+		   <property name="lengthseq" type="java.lang.Integer"  column="length_seq"/>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+        <!--
+        <property name="connection.datasource">java:/comp/env/jdbc/MySQLMYPETSHOUTS</property>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="show_sql">false</property>
+        <property name="format_sql">true</property>
+        <property name="current_session_context_class">thread</property>  -->
+        
+        <!--
+        <property name="transaction.factory_class">
+            org.hibernate.transaction.JTATransactionFactory
+        </property>-->
+        
+        <!-- Database connection settings -->
+        
+   
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/ampednew?characterEncoding=latin1</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">Rithwik10</property>
+        <property name="connection.pool_size">10</property>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="current_session_context_class">thread</property>
+        <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+        <property name="show_sql">true</property>
+		
+              
+       
+        <mapping resource="com/amp/amp/amp/beans/UserBean.hbm.xml"/>
+		<mapping resource="com/amp/amp/amp/beans/PeptideBean.hbm.xml"/>
+			<mapping resource="com/amp/amp/amp/beans/Micfn.hbm.xml"/>
+		<!--<mapping resource="com/mps/mps/mps/beans/HotDealBean.hbm.xml"/>
+		<mapping resource="com/mps/mps/mps/beans/DealBean.hbm.xml"/>
+    	<mapping resource="com/mps/mps/mps/beans/VochurBean.hbm.xml"/>
+		<mapping resource="com/mps/mps/mps/beans/CheckoutDealBean.hbm.xml"/>
+		<mapping resource="com/mps/mps/mps/beans/ItemBean.hbm.xml"/>-->
+      
+    </session-factory>
+</hibernate-configuration>
