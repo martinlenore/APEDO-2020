@@ -36,11 +36,6 @@
         <mapping resource="com/amp/amp/amp/beans/UserBean.hbm.xml"/>
 		<mapping resource="com/amp/amp/amp/beans/PeptideBean.hbm.xml"/>
 		<mapping resource="com/amp/amp/amp/beans/MicfnBean.hbm.xml"/>
-		<!--<mapping resource="com/mps/mps/mps/beans/HotDealBean.hbm.xml"/>
-		<mapping resource="com/mps/mps/mps/beans/DealBean.hbm.xml"/>
-    	<mapping resource="com/mps/mps/mps/beans/VochurBean.hbm.xml"/>
-		<mapping resource="com/mps/mps/mps/beans/CheckoutDealBean.hbm.xml"/>
-		<mapping resource="com/mps/mps/mps/beans/ItemBean.hbm.xml"/>-->
       
     </session-factory>
 </hibernate-configuration>
